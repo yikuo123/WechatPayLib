@@ -1,0 +1,11 @@
+{
+    "name": "wechat/PaySDK",
+    "type": "library",
+    "require": {
+        "php": ">=5.3",
+        "ext-mcrypt": "*"
+    },
+    "autoload": {
+        "classmap": ["lib/"]
+    }
+}
