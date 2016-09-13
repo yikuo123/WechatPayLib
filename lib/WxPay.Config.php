@@ -60,4 +60,5 @@ class __WxPayConfig
 	 * @var int
 	 */
 	const REPORT_LEVENL = 1;
+	const NOTIFY_URL = '';
 }
