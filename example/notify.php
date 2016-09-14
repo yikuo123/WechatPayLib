@@ -8,7 +8,7 @@ require_once 'log.php';
 
 //初始化日志
 $logHandler= new CLogFileHandler("../logs/".date('Y-m-d').'.log');
-$log = Log::Init($logHandler, 15);
+$log = WxPayLog::Init($logHandler, 15);
 
 class PayNotifyCallBack extends WxPayNotify
 {
@@ -18,7 +18,7 @@ class PayNotifyCallBack extends WxPayNotify
 		$input = new WxPayOrderQuery();
 		$input->SetTransaction_id($transaction_id);
 		$result = WxPayApi::orderQuery($input);
-		Log::DEBUG("query:" . json_encode($result));
+		WxPayLog::DEBUG("query:" . json_encode($result));
 		if(array_key_exists("return_code", $result)
 			&& array_key_exists("result_code", $result)
 			&& $result["return_code"] == "SUCCESS"
@@ -32,7 +32,7 @@ class PayNotifyCallBack extends WxPayNotify
 	//重写回调处理函数
 	public function NotifyProcess($data, &$msg)
 	{
-		Log::DEBUG("call back:" . json_encode($data));
+		WxPayLog::DEBUG("call back:" . json_encode($data));
 		$notfiyOutput = array();
 		
 		if(!array_key_exists("transaction_id", $data)){
@@ -48,6 +48,6 @@ class PayNotifyCallBack extends WxPayNotify
 	}
 }
 
-Log::DEBUG("begin notify");
+WxPayLog::DEBUG("begin notify");
 $notify = new PayNotifyCallBack();
 $notify->Handle(false);

@@ -27,7 +27,7 @@ class CLogFileHandler implements ILogHandler
 	}
 }
 
-class Log
+class WxPayLog
 {
 	private $handler = null;
 	private $level = 15;
