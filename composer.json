@@ -1,5 +1,5 @@
 {
-    "name": "wechat/PaySDK",
+    "name": "ikecin/wechat-pay-sdk",
     "type": "library",
     "require": {
         "php": ">=5.3",
